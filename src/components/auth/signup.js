@@ -1,10 +1,20 @@
 import React from 'react'
 
 export default function Signup(props) {
+
+  const errorMessage = {
+    "none": "",
+    "blank field": "Please fill in all fields.",
+    "mismatched passwords": "Passwords do not match. Please try again.",
+    "fetch error": "An error occured. Please try again later.",
+    "username taken": "Username already exists. Please try another one."
+}
+
   return (
-    <form onSubmit={props.hanledSignup} className='login-wrapper'>
+    <form onSubmit={props.handleSignup} className='login-wrapper'>
       <div className="email-wrapper">
-        <input 
+        <input
+          autoComplete="off" 
           type="text"
           placeholder="email@example.com"
           name="userEmailInput"
@@ -12,6 +22,7 @@ export default function Signup(props) {
           onChange={props.handleChange}
         />
         <input 
+          autoComplete="off"
           type="password"
           placeholder="enter your password"
           name="userPassword"
@@ -20,13 +31,16 @@ export default function Signup(props) {
         />
 
         <input 
+          autoComplete="off"
           type="password"
           placeholder="confirm your password"
-          name="userPassword"
+          name="userPasswordConfirm"
           value={props.userPasswordConfirm}
           onChange={props.handleChange}
         />
-        <button onClick={props.handleClick}>Signup</button>
+        <div className="button-wrapper">
+          <button>Signup</button>
+        </div>
       </div>
     </form>
   );
