@@ -69,7 +69,6 @@ export default function adminProductsPage(props) {
         <img src={previewSource} alt="chosen" style={{height: '70px'}} />
       )}
 
-      <Product />
     </div>
   );
 }

@@ -53,7 +53,7 @@ export default class Auth extends Component {
             console.log(data)
 
             if (data === "Email exists already") {
-                this.setState({ errorText: "username taken" })
+                this.setState({ errorText: "email exists already" })
             }
             else {
                 this.setState({ errorText: "none" })
@@ -64,7 +64,7 @@ export default class Auth extends Component {
             this.setState({ errorText: "fetch error" })
         })
     }
-}
+  }
 
   handleLogin(event) {
     event.preventDefault()
@@ -82,13 +82,13 @@ export default class Auth extends Component {
             })
         })
         .then(response => {
-          debugger;
-          console.log(response)
           response.json()
         })
         .then(data => {
+          console.log(data)
             if (data === "User not verified") {
                 this.setState({ errorText: "not verified" })
+                this.props.history.push("/")
             }
              else {
                  Cookies.set("email", this.state.userEmailInput)
@@ -101,7 +101,7 @@ export default class Auth extends Component {
             this.setState({ errorText: "fetch error" })
          })
     }
-}
+  }
 
   handleAuthMethodChange(){
     this.state.authMethod === 'login' ? this.setState({
