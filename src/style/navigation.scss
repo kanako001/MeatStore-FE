@@ -1,0 +1,13 @@
+.home-wrapper {
+  display: flex;
+  width: 100%;
+  .product-container-wrapper {
+    display: inherit;
+    width: inherit;
+    
+    .navigation-wrapper {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}

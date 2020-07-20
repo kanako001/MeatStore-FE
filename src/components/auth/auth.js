@@ -118,8 +118,9 @@ export default class Auth extends Component {
 
   handleLogout() {
     console.log("logout")
-    Cookies.set("username", "")
-    this.setState({ loginStatus: "NOT_LOGGED_IN"})
+    return "logout"
+    // Cookies.set("username", "")
+    // this.setState({ loginStatus: "NOT_LOGGED_IN"})
   }
 
   handleAuthMethodChange(){
@@ -141,7 +142,7 @@ export default class Auth extends Component {
       errorText: "",
     })
   
-}
+  }
 
   // componentWillUnmount() {
   //   this.handleLogin()
@@ -158,6 +159,8 @@ export default class Auth extends Component {
           usernameInput={this.state.usernameInput}
           userPassword={this.state.userPassword}
           errorText={this.state.errorText}
+          handleAuthMethodChange={this.handleAuthMethodChange}
+          authMethodFooterSentence={this.state.authMethodFooterSentence}
           />
         :
           <Signup 
@@ -167,9 +170,10 @@ export default class Auth extends Component {
           userPassword={this.state.userPassword}
           userPasswordConfirm={this.state.userPasswordConfirm}
           errorText={this.state.errorText}
+          handleAuthMethodChange={this.handleAuthMethodChange}
+          authMethodFooterSentence={this.state.authMethodFooterSentence}
           />
-        }
-        <h4 onClick={this.handleAuthMethodChange}>{this.state.authMethodFooterSentence}</h4>
+    }
       </div>
     );
   }

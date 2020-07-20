@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { handleLogOut } from '../auth/auth'
+import Auth from '../auth/auth'
+
 
 export default class Navigation extends Component {
   constructor(props) {
@@ -17,6 +18,8 @@ export default class Navigation extends Component {
   testClick () {
     console.log("test")
   }
+
+  // handleLogout()
 
   render() {
     return (

@@ -46,6 +46,10 @@ export default function Signup(props) {
       <div className="button-wrapper">
         <button>Signup</button>
       </div>
+
+      <div className="auth-sentence">
+        <h4 onClick={props.handleAuthMethodChange}>{props.authMethodFooterSentence}</h4>
+      </div>
     </form>
   );
 }

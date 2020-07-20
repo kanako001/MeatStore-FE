@@ -34,9 +34,14 @@ export default function Login(props) {
         />
       </div>
 
-        <div className="button-wrapper">
-          <button onClick={props.handleClick}>Login</button>
-        </div>
+      <div className="button-wrapper">
+        <button onClick={props.handleClick}>Login</button>
+      </div>
+
+      <div className="auth-sentence">
+        <h4 onClick={props.handleAuthMethodChange}>{props.authMethodFooterSentence}</h4>
+      </div>
+
     </form>
   );
 }
