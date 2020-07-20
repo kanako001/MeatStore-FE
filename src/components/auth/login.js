@@ -7,19 +7,23 @@ export default function Login(props) {
     "blank field": "Please fill in all fields.",
     "fetch error": "An error occured. Please try again later.",
     "not verified": "Incorrect username or password."
-}
+  }
 
   return (
     <form onSubmit={props.handleLogin} className='login-wrapper'>
+        {errorMessage[props.errorText]}
       <div className="email-wrapper">
         <input 
           autoComplete="off"
           type="text"
           placeholder="email@example.com"
-          name="userEmailInput"
-          value={props.userEmailInput}
+          name="usernameInput"
+          value={props.usernameInput}
           onChange={props.handleChange}
         />
+      </div>
+
+      <div className="password-wrapper">
         <input 
           autoComplete="off"
           type="password"
@@ -28,10 +32,11 @@ export default function Login(props) {
           value={props.userPassword}
           onChange={props.handleChange}
         />
+      </div>
+
         <div className="button-wrapper">
           <button onClick={props.handleClick}>Login</button>
         </div>
-      </div>
     </form>
   );
 }

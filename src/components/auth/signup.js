@@ -11,16 +11,18 @@ export default function Signup(props) {
 }
 
   return (
-    <form onSubmit={props.handleSignup} className='login-wrapper'>
+    <form onSubmit={props.handleSignup} className='signup-wrapper'>
       <div className="email-wrapper">
         <input
           autoComplete="off" 
           type="text"
           placeholder="email@example.com"
-          name="userEmailInput"
-          value={props.userEmailInput}
+          name="usernameInput"
+          value={props.usernameInput}
           onChange={props.handleChange}
         />
+      </div>
+      <div className="password-wrapper">
         <input 
           autoComplete="off"
           type="password"
@@ -29,7 +31,8 @@ export default function Signup(props) {
           value={props.userPassword}
           onChange={props.handleChange}
         />
-
+      </div>
+      <div className="password-confirmation-wrapper">
         <input 
           autoComplete="off"
           type="password"
@@ -38,9 +41,10 @@ export default function Signup(props) {
           value={props.userPasswordConfirm}
           onChange={props.handleChange}
         />
-        <div className="button-wrapper">
-          <button>Signup</button>
-        </div>
+      </div>
+
+      <div className="button-wrapper">
+        <button>Signup</button>
       </div>
     </form>
   );

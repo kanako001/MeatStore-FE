@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { handleLogOut } from '../auth/auth'
+
 export default class Navigation extends Component {
   constructor(props) {
     super(props);
@@ -8,6 +10,12 @@ export default class Navigation extends Component {
     this.state = {
       
     }
+    this.testClick = this.testClick.bind(this)
+  }
+
+
+  testClick () {
+    console.log("test")
   }
 
   render() {
@@ -23,6 +31,10 @@ export default class Navigation extends Component {
 
         <div className="search-btn-wrapper">
           <FontAwesomeIcon icon="search" />
+        </div>
+
+        <div className="log-out-btn-wrapper">
+          <FontAwesomeIcon onClick={this.handleLogOut} icon="sign-out-alt" />
         </div>
 
       </div>

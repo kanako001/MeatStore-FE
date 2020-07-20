@@ -12,28 +12,30 @@ export default class Auth extends Component {
     this.state = {
       authMethodFooterSentence: "Don't have an Account? Sign up.",
       authMethod: "login",
-      userEmailInput: "",
+      usernameInput: "",
       userPassword: "",
       userPasswordConfirm: "",
       errorText: "",
+      loginStatus: "NOT_LOGGED_IN"
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
-    this.handleSignup = this.handleSignup .bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
+    this.handleSignup = this.handleSignup.bind(this)
     this.handleAuthMethodChange = this.handleAuthMethodChange.bind(this)
   }
 
   handleChange(event) {
     this.setState({
-      [event.target.name] : event.target.value
+      [event.target.name] : event.target.value,
+      errorText: "none"
     })
   }
-
 
   handleSignup(event) {
     event.preventDefault()
 
-    if (this.state.userEmailInput === "" || this.state.userPassword === "" || this.state.userPasswordConfirm === "") {
+    if (this.state.usernameInput === "" || this.state.userPassword === "" || this.state.userPasswordConfirm === "") {
         this.setState({ errorText: "blank field" })
     }
     else if (this.state.userPassword !== this.state.userPasswordConfirm) {
@@ -44,19 +46,24 @@ export default class Auth extends Component {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
-                email: this.state.userEmailInput,
+                username: this.state.usernameInput,
                 password: this.state.userPassword
             })
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
-
-            if (data === "Email exists already") {
-                this.setState({ errorText: "email exists already" })
+          console.log(data)
+            if (data === "username exists already") {
+                this.setState({ errorText: "username exists already" })
             }
-            else {
-                this.setState({ errorText: "none" })
+            else if (data === "User created successfully"){
+                this.setState({ 
+                  errorText: "none",
+                  usernameInput: "",
+                  userPassword: "",
+                  userPasswordConfirm: "",
+                  loginStatus: "LOGGED_IN"
+                })
             }
         })
         .catch(error => {
@@ -69,7 +76,7 @@ export default class Auth extends Component {
   handleLogin(event) {
     event.preventDefault()
 
-    if (this.state.userEmailInput === "" || this.state.userPassword === "") {
+    if (this.state.usernameInput === "" || this.state.userPassword === "") {
         this.setState({ errorText: "blank field" })
     }
     else {
@@ -77,24 +84,30 @@ export default class Auth extends Component {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
-                email: this.state.userEmailInput,
+                username: this.state.usernameInput,
                 password: this.state.userPassword
             })
         })
-        .then(response => {
-          response.json()
-        })
+        .then(response => response.json())
         .then(data => {
           console.log(data)
             if (data === "User not verified") {
-                this.setState({ errorText: "not verified" })
-                this.props.history.push("/")
+                this.setState({ 
+                  errorText: "not verified", 
+                  usernameInput: "",
+                  userPassword: ""
+                })
+                this.props.history.push('/')
             }
-             else {
-                 Cookies.set("email", this.state.userEmailInput)
+             else if(data === "User verified") {
+                 Cookies.set("username", this.state.usernameInput)
+                 this.setState({
+                  usernameInput: "",
+                  userPassword: "",
+                  loginStatus: "LOGGED_IN"
+                 })
                  this.props.history.push("/product")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   (Cookies.get("username"))
              }
-            console.log(data)
          })
         .catch(error => {
             console.log(error)
@@ -103,11 +116,17 @@ export default class Auth extends Component {
     }
   }
 
+  handleLogout() {
+    console.log("logout")
+    Cookies.set("username", "")
+    this.setState({ loginStatus: "NOT_LOGGED_IN"})
+  }
+
   handleAuthMethodChange(){
     this.state.authMethod === 'login' ? this.setState({
       authMethod: 'signup',
       authMethodFooterSentence: 'Already have an account? Log in.',
-      userEmailInput: "",
+      usernameInput: "",
       userPassword: "",
       userPasswordConfirm: "",
       errorText: "",
@@ -116,13 +135,17 @@ export default class Auth extends Component {
     this.setState({
       authMethod: 'login',
       authMethodFooterSentence: "Don't have an Account? Sign up",
-      userEmailInput: "",
+      usernameInput: "",
       userPassword: "",
       userPasswordConfirm: "",
       errorText: "",
     })
   
 }
+
+  // componentWillUnmount() {
+  //   this.handleLogin()
+  // }
 
   render() {
     return (
@@ -132,7 +155,7 @@ export default class Auth extends Component {
           <Login 
           handleChange={this.handleChange}
           handleLogin={this.handleLogin}
-          userEmailInput={this.state.userEmailInput}
+          usernameInput={this.state.usernameInput}
           userPassword={this.state.userPassword}
           errorText={this.state.errorText}
           />
@@ -140,7 +163,7 @@ export default class Auth extends Component {
           <Signup 
           handleChange={this.handleChange}
           handleSignup={this.handleSignup}
-          userEmailInput={this.state.userEmailInput}
+          usernameInput={this.state.usernameInput}
           userPassword={this.state.userPassword}
           userPasswordConfirm={this.state.userPasswordConfirm}
           errorText={this.state.errorText}

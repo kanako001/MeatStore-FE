@@ -17,7 +17,6 @@ export default class ProductContainer extends Component {
   }
 
   componentDidMount () {
-    console.log("here")
     fetch(`http://127.0.0.1:5000/product/get`, { method: "GET" })
     .then(response => response.json())
      .then(data => this.setState({ 
@@ -25,7 +24,6 @@ export default class ProductContainer extends Component {
      }))
 
     .catch(error => console.log(error))
-    console.log("here again")
   }
 
   productsLists() {

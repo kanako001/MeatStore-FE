@@ -5,8 +5,7 @@ import AdminProductsPage from '../adminControls/adminProductsPage';
 
 export default function homehn(props) {
   return (
-    <div className='home-wrapper'>
-      <AdminProductsPage />
+    <div className='home-wrapper'> 
       <ProductContainer />
     </div>
   );
