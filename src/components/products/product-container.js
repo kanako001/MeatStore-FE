@@ -12,8 +12,10 @@ export default class ProductContainer extends Component {
       name: "",
       price: "",
       description: "",
-      image: ""
+      image: "",
+      cartItems: []
     }
+    this.myTestFunction = this.myTestFunction.bind(this)
   }
 
   componentDidMount () {
@@ -34,10 +36,20 @@ export default class ProductContainer extends Component {
     })
   }
 
+  // handleAddToCart() {
+  //   this.state.cartItems.push(
+  //     <Product />
+  //   )
+  // }
+
+  myTestFunction() {
+    this.props.handleLogout()
+  }
+
   render() {
     return (
       <div className='product-container-wrapper'>
-        <Navigation />
+        <Navigation handleLogout={this.myTestFunction}/>
         {this.productsLists()}
       </div>
     );

@@ -16,11 +16,10 @@ export default class Auth extends Component {
       userPassword: "",
       userPasswordConfirm: "",
       errorText: "",
-      loginStatus: "NOT_LOGGED_IN"
+      loginStatus: this.props.loginStatus
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
-    this.handleLogout = this.handleLogout.bind(this)
     this.handleSignup = this.handleSignup.bind(this)
     this.handleAuthMethodChange = this.handleAuthMethodChange.bind(this)
   }
@@ -62,7 +61,7 @@ export default class Auth extends Component {
                   usernameInput: "",
                   userPassword: "",
                   userPasswordConfirm: "",
-                  loginStatus: "LOGGED_IN"
+                  [this.props.loginStatus]: "LOGGED_IN"
                 })
             }
         })
@@ -116,13 +115,6 @@ export default class Auth extends Component {
     }
   }
 
-  handleLogout() {
-    console.log("logout")
-    return "logout"
-    // Cookies.set("username", "")
-    // this.setState({ loginStatus: "NOT_LOGGED_IN"})
-  }
-
   handleAuthMethodChange(){
     this.state.authMethod === 'login' ? this.setState({
       authMethod: 'signup',
@@ -144,10 +136,24 @@ export default class Auth extends Component {
   
   }
 
-  // componentWillUnmount() {
-  //   this.handleLogin()
-  // }
+// componentDidMount() {
+//   if(this.state.loginStatus === "NOT_LOGGED_IN") {
+//     this.props.history.push('/')
+//   }
+//   else {
+//     this.props.history.push("/product")
+//   }
+// }
 
+//  componentDidMount() {
+//   let username = Cookies.get('username')
+//   if(username) {
+//     this.props.history.push('/product')
+//   }
+//   else {
+//     this.props.history.push('/')
+//   }
+//  }
   render() {
     return (
 
@@ -173,7 +179,7 @@ export default class Auth extends Component {
           handleAuthMethodChange={this.handleAuthMethodChange}
           authMethodFooterSentence={this.state.authMethodFooterSentence}
           />
-    }
+      }
       </div>
     );
   }

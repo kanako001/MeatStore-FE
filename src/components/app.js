@@ -11,6 +11,7 @@ import Home from './pages/home'
 import About from './pages/about'
 import Footer from './pages/footer'
 import Nomatch from './pages/no-match'
+import ProductContainer from './products/product-container';
 
 library.add(fab, faSearch, faBars, faSignOutAlt)
 
@@ -20,18 +21,54 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      loginStatus: "NOT_LOGGED_IN"
+      loginStatus: "NOT_LOGGED_IN",
+    }
+
+    this.handleLogout = this.handleLogout.bind(this)
+    this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this)
+    this.handleUnSuccessfulLogin = this.handleUnSuccessfulLogin.bind(this)
+  }
+
+  checkLoginStatus() {
+    let username = Cookies.get('username')
+    if(this.state.loginStatus === "LOGGED_IN" && username) {
+      console.log("logged in")
+    } else {
+      console.log("not logged in")
     }
   }
 
+  handleLogout() {
+    Cookies.remove('username')
+    this.setState({
+      loginStatus: "NOT_LOGGED_IN"
+    })
+  }
+
+  handleSuccessfulLogin() {
+    this.setState({
+      loginStatus: "LOGGED_IN"
+    })
+  }
+
+  handleUnSuccessfulLogin() {
+    this.setState({
+      loginStatus: "NOT_LOGGED_IN"
+    })
+  }
+
   componentDidMount() {
-    let username = Cookies.get('username')
-    if(username) {
-      console.log("yay")
-    }
-    else {
-      console.log("nah")
-    }
+    this.checkLoginStatus()
+  }
+
+  authorizedPages() {
+    return [
+      <Route 
+        key="home"
+        path="/home"
+        component={Home}
+      />
+    ]
   }
 
   render() {
@@ -40,8 +77,14 @@ export default class App extends Component {
         <BrowserRouter>
           <div>
             <Switch>
-              <Route exact path="/" component={Auth} />
-              <Route exact path="/product" component={Home} />
+              <Route 
+              exact path="/" 
+              component={Auth}
+              loginStatus={this.state.loginStatus}
+              handleSuccessfulLogin = {this.handleSuccessfulLogin}
+              handleUnSuccessfulLogin = {this.handleUnSuccessfulLogin}
+              />
+              <Route exact path="/product" render={(props) => (<Home handleLogout={this.handleLogout} />)} />
             </Switch>
           </div>
         </BrowserRouter>

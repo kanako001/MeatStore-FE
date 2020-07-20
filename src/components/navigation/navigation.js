@@ -11,15 +11,11 @@ export default class Navigation extends Component {
     this.state = {
       
     }
-    this.testClick = this.testClick.bind(this)
   }
 
-
-  testClick () {
-    console.log("test")
-  }
-
-  // handleLogout()
+  // componentDidMount() {
+  //   this.props.handleLogout()
+  // }
 
   render() {
     return (
@@ -37,7 +33,7 @@ export default class Navigation extends Component {
         </div>
 
         <div className="log-out-btn-wrapper">
-          <FontAwesomeIcon onClick={this.handleLogOut} icon="sign-out-alt" />
+          <FontAwesomeIcon onClick={this.props.handleLogout} icon="sign-out-alt" />
         </div>
 
       </div>
