@@ -41,7 +41,7 @@ export default class Auth extends Component {
         this.setState({ errorText: "mismatched passwords" })
     }
     else {
-        fetch("http://127.0.0.1:5000/user/create", {
+        fetch("https://meat-store-be-ka.herokuapp.com//user/create", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
@@ -79,7 +79,7 @@ export default class Auth extends Component {
         this.setState({ errorText: "blank field" })
     }
     else {
-        fetch("http://127.0.0.1:5000/user/verification", {
+        fetch("https://meat-store-be-ka.herokuapp.com//user/verification", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
