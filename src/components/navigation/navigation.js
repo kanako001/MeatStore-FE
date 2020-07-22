@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { withRouter, Redirect } from 'react-router'
+import { NavLink } from 'react-router-dom'
+import logo from "../../../static/assets/images/logo/darkLogo.png"
 
 import Auth from '../auth/auth'
 
@@ -13,27 +16,49 @@ export default class Navigation extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.props.handleLogout()
-  // }
+  handleClick() {
+    <Redirect to="/" />
+  }
+
+  
 
   render() {
     return (
       <div className='navigation-wrapper'>
-        <div className="auxiliary-menu">
-          <FontAwesomeIcon icon="bars" />
-        </div>
-        
-        <div className="searchbar-wrapper">
-          <input type="search" name="search" id="search-bar"/>
+        <NavLink to="/" className="nav-link-wrapper">
+          <img src={logo} alt="image" style={{ width: '200px', height: '200px'}}/>
+        </NavLink>
+
+        <div className="links-wrapper">
+          <div className="nav-link-wrapper">
+            <NavLink exact to="/" activeClassName="nav-link-active">
+              Home
+            </NavLink>
+          </div>
+          <div className="nav-link-wrapper">
+            <NavLink exact to="/about" activeClassName="nav-link-active">
+              About
+            </NavLink>
+          </div>
+          <div className="nav-link-wrapper">
+            <NavLink exact to="/contact" activeClassName="nav-link-active">
+              Contact
+            </NavLink>
+          </div>
         </div>
 
-        <div className="search-btn-wrapper">
-          <FontAwesomeIcon icon="search" />
-        </div>
+        <div className="icon-wrapper">
+          {/* <div className="auxiliary-menu">
+            <FontAwesomeIcon icon="bars"  style={{display: 'none'}}/>
+          </div> */}
+          
+          <div className="searchbar-wrapper">
+            <input type="search" name="search" id="search-bar" placeholder="Type to search" />
+          </div>
 
-        <div className="log-out-btn-wrapper">
-          <FontAwesomeIcon onClick={this.props.handleLogout} icon="sign-out-alt" />
+          <div className="search-btn-wrapper">
+            <FontAwesomeIcon style={{fontSize: '2em'}}icon="search" />
+          </div>
         </div>
 
       </div>

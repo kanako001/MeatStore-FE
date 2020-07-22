@@ -4,19 +4,37 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
+  background-color: $charcoal;
+  color: $white;
+  overflow-x: hidden !important;
+  // overflow-y: hidden !important;
 }
+
+a {
+  color: $brocolli-green;
+  text-decoration: none;
+  font-weight: bold;
+  &:hover {
+    color: $salad-green;
+  }
+}
+
 
 .app-wrapper {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .app {
   width: 100%;
-  height: inherit;
+  height: 100%;
 
   div {
     width: inherit;
-    height: inherit;
+    // height: 100%;
+    text-align: center;
   }
 }

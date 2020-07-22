@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import Product from './product'
-import Navigation from '../navigation/navigation'
+import Loading from '../pages/loading'
 
 export default class ProductContainer extends Component {
   constructor(props) {
@@ -13,19 +13,31 @@ export default class ProductContainer extends Component {
       price: "",
       description: "",
       image: "",
-      cartItems: []
+      cartItems: [],
+      isLoading: false
     }
     this.myTestFunction = this.myTestFunction.bind(this)
   }
 
   componentDidMount () {
-    fetch(`https://meat-store-be-ka.herokuapp.com//product/get`, { method: "GET" })
+    this.mounted = true;
+
+    fetch(`http://127.0.0.1:5000/product/get`, { method: "GET" })
     .then(response => response.json())
-     .then(data => this.setState({ 
-       data: data
-     }))
+     .then(data => {
+       if(this.mounted){
+         this.setState({
+           data: data,
+           isLoading: true
+          })
+        }
+      })
 
     .catch(error => console.log(error))
+  }
+
+  componentWillUnmount() {
+    this.mounted = false
   }
 
   productsLists() {
@@ -47,10 +59,20 @@ export default class ProductContainer extends Component {
   }
 
   render() {
+    if(this.state.data.length < 3) {
+      return(
+        <Loading />
+      )
+    }
+
     return (
       <div className='product-container-wrapper'>
-        <Navigation handleLogout={this.myTestFunction}/>
-        {this.productsLists()}
+        <div className="products-wrapper">
+          {this.productsLists()}
+        </div>
+        <div className="checkout-btn-wrapper">
+          <button type="submit">Checkout</button>
+        </div>
       </div>
     );
   }

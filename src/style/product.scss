@@ -1,0 +1,19 @@
+.products-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  height: 70%;
+
+  .product-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+
+    .img-wrapper {
+      img {
+        border-radius: 4px;
+        height: 300px;
+      }
+    }
+  }
+}
