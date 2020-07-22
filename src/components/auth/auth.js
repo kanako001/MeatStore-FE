@@ -41,7 +41,7 @@
 //         this.setState({ errorText: "mismatched passwords" })
 //     }
 //     else {
-//         fetch("https://meat-store-be-ka.herokuapp.com//user/create", {
+//         fetch("http://127.0.0.1:5000//user/create", {
 //             method: "POST",
 //             headers: { "content-type": "application/json" },
 //             body: JSON.stringify({
@@ -79,7 +79,7 @@
 //         this.setState({ errorText: "blank field" })
 //     }
 //     else {
-//         fetch("https://meat-store-be-ka.herokuapp.com//user/verification", {
+//         fetch("http://127.0.0.1:5000//user/verification", {
 //             method: "POST",
 //             headers: { "content-type": "application/json" },
 //             body: JSON.stringify({

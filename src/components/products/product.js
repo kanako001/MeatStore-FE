@@ -45,7 +45,7 @@ export default class Product extends Component {
   handleAddToCart(){
     const { id, product_name, product_price, product_description, data } = this.props.item
     this.state.cart.push(this.state.amount, product_name, product_price, id)
-    fetch(`https://meat-store-be-ka.herokuapp.com/item/add`, {
+    fetch(`http://127.0.0.1:5000/item/add`, {
       method: 'POST',
       body: JSON.stringify(
       {cart: this.state.cart}

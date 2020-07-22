@@ -3,6 +3,9 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   height: 70%;
+  @media screen and (max-width: $small-screen){
+    grid-template-columns: 1fr;
+  }
 
   .product-wrapper {
     display: flex;

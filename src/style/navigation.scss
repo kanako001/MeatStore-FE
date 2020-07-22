@@ -22,6 +22,11 @@
     margin-top: 15px;
     margin-bottom: 20px;
 
+    @media screen and (max-width: $small-screen){
+      grid-template-columns: 2fr 1fr;
+
+    }
+
     .searchbar-wrapper {
       display: inline-flex;
       flex-direction: column;
@@ -34,6 +39,13 @@
         margin-right: 20px;
         border-radius: 5px;
         text-align: center;
+
+        @media screen and (max-width: $small-screen){
+          width: 90%;
+          // margin-left: 10px;
+          margin-right: 0px;
+
+        }
       }
     }
 
