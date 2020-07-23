@@ -69,14 +69,25 @@
 
 div {
   .current-page {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    max-width: 80%;
+    height: 500px;
+    margin-left:  10%;
+
+    @media screen and (max-width: $small-screen){
+      height: 700px;
+    }
+
+    .images-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 15px;
+      @media screen and (max-width: $small-screen){
+        grid-template-columns: 1fr;
+      }
+    }
 
     div {
-      width: 80%
+
     }
 
   }

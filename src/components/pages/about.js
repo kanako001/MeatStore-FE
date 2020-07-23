@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import firstImage from '../../../static/assets/images/itemImages/live/cows.jpg'
+import secondImage from '../../../static/assets/images/itemImages/live/sheep.jpg'
 
 import Navigation from '../navigation/navigation'
 
@@ -24,7 +26,16 @@ export default class About extends Component {
         light with the idea of expansion. The best part about doing business with us;
         Products never run out. We, the McTest faily are grateful 
         for your business and we look forward to a better and brighter future
-        with you.</div>  
+        with you.</div>
+
+        <div className="images-wrapper">
+          <div className="first-image">
+            <img src={firstImage} alt="first image" style={{width: '350px', }}/>
+          </div>
+          <div className="second-image">
+            <img src={secondImage} alt="second image" style={{width: '350px', }}/>
+          </div>
+        </div>
       </div>
     );
   }
