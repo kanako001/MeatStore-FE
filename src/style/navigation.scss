@@ -75,6 +75,7 @@ div {
 
     @media screen and (max-width: $small-screen){
       height: 850px;
+      margin-left: 3%;
     }
 
     .images-wrapper {
@@ -87,6 +88,9 @@ div {
     }
 
     div {
+      // @media screen and (max-width: $small-screen){
+      //   margin-left: 8%;
+      // }
 
     }
 
