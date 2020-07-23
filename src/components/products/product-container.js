@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 import Product from './product'
 import Loading from '../pages/loading'
@@ -17,6 +18,7 @@ export default class ProductContainer extends Component {
       isLoading: false
     }
     this.myTestFunction = this.myTestFunction.bind(this)
+    this.handleCheckout = this.handleCheckout.bind(this)
   }
 
   componentDidMount () {
@@ -48,11 +50,12 @@ export default class ProductContainer extends Component {
     })
   }
 
-  // handleAddToCart() {
-  //   this.state.cartItems.push(
-  //     <Product />
-  //   )
-  // }
+  handleCheckout() {
+    fetch(`https://meat-store-be-ka.herokuapp.com/items/get`, {
+      method: "GET"
+    })
+    .then(response => console.log(response))
+  }
 
   myTestFunction() {
     this.props.handleLogout()
@@ -67,6 +70,10 @@ export default class ProductContainer extends Component {
 
     return (
       <div className='product-container-wrapper'>
+        <div className="checkout-btn-wrapper">
+          <FontAwesomeIcon style={{fontSize: '1.5em', cursor: 'pointer', right: 0}} icon={"shopping-cart"} />
+        </div>
+
         <div className="products-wrapper">
           {this.productsLists()}
         </div>

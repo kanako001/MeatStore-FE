@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect} from "react-router-dom"
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import {faSearch, faBars } from '@fortawesome/free-solid-svg-icons'
+import { fab, faTwitter, faFacebook, faInstagramSquare } from '@fortawesome/free-brands-svg-icons'
+import {faSearch, faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 
 import Home from './pages/home'
@@ -12,7 +12,7 @@ import Footer from './pages/footer'
 import Nomatch from './pages/no-match'
 import Navigation from './navigation/navigation'
 
-library.add(fab, faSearch, faBars)
+library.add(fab, faSearch, faBars, faShoppingCart, faFacebook, faTwitter, faInstagramSquare)
 
 export default class App extends Component {
 

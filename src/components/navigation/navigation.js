@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { withRouter, Redirect } from 'react-router'
 import { NavLink } from 'react-router-dom'
-import logo from "../../../static/assets/images/logo/darkLogo.png"
+import logo from "../../../static/assets/images/logo/newDarkLogo.png"
 
 import Auth from '../auth/auth'
 
@@ -57,7 +57,7 @@ export default class Navigation extends Component {
           </div>
 
           <div className="search-btn-wrapper">
-            <FontAwesomeIcon style={{fontSize: '2em'}}icon="search" />
+            <FontAwesomeIcon style={{fontSize: '2em', cursor: 'pointer'}} icon="search" />
           </div>
         </div>
 
