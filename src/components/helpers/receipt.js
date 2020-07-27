@@ -8,7 +8,8 @@ export default class Receipt extends Component {
     this.state = {
       name: "",
       price: "",
-      quantity: ""
+      quantity: "",
+      display: "flex"
     }
     this.hanleDoneClick = this.hanleDoneClick.bind(this)
   }
@@ -23,6 +24,9 @@ export default class Receipt extends Component {
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.log(error))
+    this.setState({
+      display: "none"
+    })
   }
   
   render() {
@@ -33,7 +37,7 @@ export default class Receipt extends Component {
           {
             Object.values(this.props.receiptData).map(value => {
               return (
-                <div key={value.id} className="receipt-content" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}> 
+                <div key={value.id} className="receipt-content" style={{display: this.state.display, alignItems: 'center', justifyContent: 'space-around'}}> 
                   <div className="quantity-wrapper">
                     <h3>Quantity</h3>
                     <p id="quantity">X{value.cart[0]}</p>
@@ -53,7 +57,7 @@ export default class Receipt extends Component {
             )})
           }
           <div className="done-button">
-            <p style={{color: 'red'}}>NOTE: ONCE YOU HIT DONE, YOU WILL NO LONGER HAVE ACCESS TO ITEMS IN YOUR CART(if you had any). <br/>
+            <p style={{color: 'red', paddingLeft: "10px", paddingRight: "10px" }}>NOTE: ONCE YOU HIT DONE, YOU WILL NO LONGER HAVE ACCESS TO ITEMS IN YOUR CART(if you had any). <br/>
                VISIT OR CALL OUR STORE TO VERIFY YOUR ORDER.</p>
             <button style={{cursor: 'pointer'}} onClick={this.hanleDoneClick}>
               Done
