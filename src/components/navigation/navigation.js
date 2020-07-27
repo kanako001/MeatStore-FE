@@ -46,13 +46,13 @@ export default class Navigation extends Component {
             <FontAwesomeIcon icon="bars"  style={{display: 'none'}}/>
           </div> */}
           
-          <div className="searchbar-wrapper">
+          {/* <div className="searchbar-wrapper">
             <input type="search" name="search" id="search-bar" placeholder="Type to search" />
           </div>
 
           <div className="search-btn-wrapper">
             <FontAwesomeIcon style={{fontSize: '2em', cursor: 'pointer'}} icon="search" />
-          </div>
+          </div> */}
         </div>
 
       </div>

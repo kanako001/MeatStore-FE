@@ -29,10 +29,10 @@ export default class Contact extends Component {
 
         <div className="image-wrapper">
           <div className="first-image">
-            <img src={firstImage} style={{width: '350px', height:'350px', borderRadius: '5px'}} alt="first image"/>
+            <img src={firstImage} style={{width: '350px', height:'300px', borderRadius: '5px'}} alt="first image"/>
           </div>
           <div className="second-image">
-            <img src={secondImage}  style={{width: '350px', height: '350px', borderRadius: '5px' }} alt="first image"/>
+            <img src={secondImage}  style={{width: '350px', height: '300px', borderRadius: '5px' }} alt="first image"/>
           </div>
         </div>
       </div>

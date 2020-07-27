@@ -30,10 +30,10 @@ export default class About extends Component {
 
         <div className="images-wrapper">
           <div className="first-image">
-            <img src={firstImage} alt="first image" style={{width: '350px', }}/>
+            <img src={firstImage} alt="first image" style={{width: '300px', }}/>
           </div>
           <div className="second-image">
-            <img src={secondImage} alt="second image" style={{width: '350px', }}/>
+            <img src={secondImage} alt="second image" style={{width: '300px', }}/>
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ body {
   background-color: $charcoal;
   color: $white;
   // overflow: hidden;
+  position: relative;
 }
 
 a {
@@ -37,21 +38,39 @@ a {
   
     div {
       width: inherit;
-      // height: 100%;
+      // min-height: 100%;
       text-align: center;
     }
   }
 }
 
 .footer-wrapper {
+  padding-top: 30vh;
+  padding-bottom: 15vh;
+  height: 30vh;
   bottom: 0;
-  margin-bottom: 120px;
-  margin-top: 60px;
-  position: static;
+  display: flex;
+  align-items: flex-end;
+
+  @media screen and(max-width: $small-screen) {
+    padding-top: 20vh;
+    padding-bottom: 15vh;
+    height: 30vh;
+  }
  
   .social-links {
     display: flex;
     justify-content: space-around;
 
+  }
+}
+
+button {
+  background-color: $brocolli-green;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    background-color: $salad-green;
+    // transition: 0.5s ease-in-out;
   }
 }
