@@ -4,7 +4,7 @@ import { withRouter, Redirect } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import logo from "../../../static/assets/images/logo/newDarkLogo.png"
 
-import Auth from '../auth/auth'
+import Receipt from "../helpers/receipt"
 
 
 export default class Navigation extends Component {
@@ -12,15 +12,9 @@ export default class Navigation extends Component {
     super(props);
 
     this.state = {
-      
+      pageTrack: "navigation"
     }
-  }
-
-  handleClick() {
-    <Redirect to="/" />
-  }
-
-  
+  }  
 
   render() {
     return (

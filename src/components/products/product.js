@@ -6,7 +6,8 @@ export default class Product extends Component {
 
     this.state = {
       amount: 0,
-      cart: []
+      cart: [],
+      itemMessage: ""
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleDecrease = this.handleDecrease.bind(this)
@@ -15,14 +16,15 @@ export default class Product extends Component {
   }
 
   handleChange(event) {
-    [event.target.name] = event.target.value
+    [event.target.name] = event.target.value;
   }
 
   handleIncrease() {
     let currentVal = this.state.amount
     currentVal = currentVal + 1
     this.setState({
-      amount: currentVal
+      amount: currentVal,
+      itemMessage: ""
     }) 
   }
 
@@ -31,31 +33,53 @@ export default class Product extends Component {
     currentVal = currentVal - 1
     if(this.state.amount <= 0) {
       this.setState({
-        amount: 0
+        amount: 0,
+        itemMessage: ""
       })
     }
     else {
       this.setState({
-        amount: currentVal
+        amount: currentVal,
+        itemMessage: ""
       })
     }
 
   }
   
   handleAddToCart(){
-    const { id, product_name, product_price, product_description, data } = this.props.item
-    this.state.cart.push(this.state.amount, product_name, product_price, id)
-    fetch(`https://meat-store-be-ka.herokuapp.com/item/add`, {
-      method: 'POST',
-      body: JSON.stringify(
-      {cart: this.state.cart}
-      ),
-      headers: {"content-type": "application/json"}
-    })
+    if(Number(this.state.amount) <= 0) {
+      this.setState({
+        itemMessage: "Can't add 0 item to cart!"
+      })
+    }else {
+
+      const { id, product_name, product_price, product_description, data } = this.props.item
+      this.state.cart.push(this.state.amount, product_name, product_price, id)
+      this.setState({
+              itemMessage: "Item Added Successfully"
+            })
+      fetch(`http://127.0.0.1:5000/item/add`, {
+        method: 'POST',
+        body: JSON.stringify( 
+        {cart: this.state.cart}
+        ),
+        headers: {"content-type": "application/json"}
+      })
+      .then(response => response.json())
+      .then(data => {
+        if(data === "Item added successfully") {
+          this.setState({
+            itemMessage: "Item Added Successfully"
+          })
+        }
+      })
+      .catch(error => console.log(error))
+    }
   }
  
   render() {
     const { id, product_name, product_price, product_description, data } = this.props.item
+
     return (
       <div className='product-wrapper'>
         <div className="img-wrapper">
@@ -72,6 +96,7 @@ export default class Product extends Component {
         </div>
 
         <div className="cart-buttons">
+          <p>{this.state.itemMessage}</p>
           <div className="cart-functionalities">
             <button onClick={this.handleDecrease}>-</button>
             <input onChange={this.handleChange} value={this.state.amount} min="1" />

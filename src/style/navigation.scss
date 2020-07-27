@@ -82,17 +82,37 @@ div {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin-top: 15px;
+
       @media screen and (max-width: $small-screen){
         grid-template-columns: 1fr;
+        margin-right: 30px;
+      }
+    }
+    .image-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 15px;
+
+      @media screen and (max-width: $small-screen){
+        grid-template-columns: 1fr;
+        margin-right: 30px;
       }
     }
 
-    div {
-      // @media screen and (max-width: $small-screen){
-      //   margin-left: 8%;
-      // }
+    // div {
+    //   @media screen and (max-width: $small-screen){
+    //     margin-left: 8%;
+    //   }
 
+    // }
+
+  }
+}
+
+.about-wrapper {
+  .content-wrapper {
+    @media screen and (max-width: $small-screen){
+      margin-left: 8%;
     }
-
   }
 }

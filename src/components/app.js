@@ -11,6 +11,7 @@ import Contact from './pages/contact'
 import Footer from './pages/footer'
 import Nomatch from './pages/no-match'
 import Navigation from './navigation/navigation'
+import Receipt from './helpers/receipt'
 
 library.add(fab, faSearch, faBars, faShoppingCart, faFacebook, faTwitter, faInstagramSquare, faPhone, faAt)
 
@@ -30,6 +31,7 @@ export default class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
               <Route exact path="/contact" component={Contact} />
+              <Route exact path="/receipt" component={Receipt} />
               <Route  component={Nomatch} />
             </Switch>
             <Footer />

@@ -40,7 +40,7 @@ export default function adminProductsPage(props) {
     const uploadImage = async (base64EncodedImage) => {
         // console.log(base64EncodedImage)
         try {
-            await fetch('https://meat-store-be-ka.herokuapp.com/product/add', {
+            await fetch('http://127.0.0.1:5000/product/add', {
                 method: 'POST',
                 body: JSON.stringify(
                     {data: base64EncodedImage, name: state.productName, price: state.productPrice, description: state.productDescription}

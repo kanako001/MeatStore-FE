@@ -45,7 +45,9 @@ a {
 
 .footer-wrapper {
   bottom: 0;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
+  margin-top: 60px;
+  position: static;
  
   .social-links {
     display: flex;

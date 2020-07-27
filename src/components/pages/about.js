@@ -18,7 +18,7 @@ export default class About extends Component {
     return (
       <div className='about-wrapper current-page'>
         <h1>About Us</h1>
-        <div>Our core values are built on customer satisfaction; 
+        <div className="content-wrapper">Our core values are built on customer satisfaction; 
         and that is the main reason we do not offer delivery options.
         We value customer relationships and that is why we have 
         all customers come in. This idea of customer based relationships
