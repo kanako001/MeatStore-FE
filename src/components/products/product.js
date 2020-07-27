@@ -58,7 +58,7 @@ export default class Product extends Component {
       this.setState({
               itemMessage: "Item Added Successfully"
             })
-      fetch(`http://127.0.0.1:5000/item/add`, {
+      fetch(`https://meat-store-be-ka.herokuapp.com/item/add`, {
         method: 'POST',
         body: JSON.stringify( 
         {cart: this.state.cart}
